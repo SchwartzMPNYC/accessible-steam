@@ -1,0 +1,16 @@
+/*Prevent mobile nav links from being read to screen readers or being in tabflow*/
+/*Steam mobile header hamburger display media query is "@media screen and (max-width: 910px)"*/
+@media screen and (min-width: 911px) {
+	.responsive_page_menu_ctn.mainmenu {
+		display: none;
+	}
+}
+
+/*Debugging css*/
+/*[aria-label]:not(:focus) {
+	outline: 3px solid #2f8;
+}*/
+
+a {
+	outline: 3px solid #2f8;
+}

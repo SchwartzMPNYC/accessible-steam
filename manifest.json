@@ -1,0 +1,36 @@
+{
+  "manifest_version": 2,
+  "name": "Accessible Steam",
+  "version": "0.1",
+
+  "description": "An attempt to make the steam store front accessible, based upon WCAG 2.1 standards.",
+
+  "icons": {
+    "48": "icons/logo-48.png",
+    "96": "icons/logo-96.png"
+  },
+
+  "permissions": ["<all_urls>", "tabs"],
+
+  "content_scripts": [
+    {
+      "matches": ["*://store.steampowered.com/"],
+      "js": ["mainPage.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["*://*.store.steampowered.com/*"],
+      "js": ["badges.js"]
+      // "run_at": "document_start"
+    },
+    {
+      "matches": ["*://*.store.steampowered.com/sale/*"],
+      "js": ["salePage.js"]
+      // "run_at": "document_start"
+    }
+  ],
+
+  "background": {
+    "scripts": ["background.js"]
+  }
+}

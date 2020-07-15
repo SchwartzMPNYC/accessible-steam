@@ -1,0 +1,16 @@
+{
+  "name": "accessible-steam",
+  "version": "0.0.1",
+  "description": "Attempt to make steam accessible for users that browse in keyboard only or screen reader contexts.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Steam",
+    "Accessibility",
+    "screenreader"
+  ],
+  "author": "Mike Schwartz",
+  "license": "ISC"
+}
