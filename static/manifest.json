@@ -13,17 +13,17 @@
   "content_scripts": [
     {
       "matches": ["*://store.steampowered.com/"],
-      "js": ["src/contentScripts/mainPage.js"],
+      "js": ["mainPage.js"],
       "run_at": "document_start"
     },
     {
       "matches": ["*://*.store.steampowered.com/*"],
-      "js": ["src/contentScripts/badges.js"],
-      "css": ["src/styles/accessibility.css"]
+      "js": ["badges.js"],
+      "css": ["styles/accessibility.css"]
     },
     {
       "matches": ["*://*.store.steampowered.com/sale/*"],
-      "js": ["src/contentScripts/salePage.js"]
+      "js": ["salePage.js"]
     }
   ]
 }

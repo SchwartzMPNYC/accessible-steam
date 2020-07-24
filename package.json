@@ -4,7 +4,8 @@
   "description": "Attempt to make steam accessible for users that browse in keyboard only or screen reader contexts.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build src/contentScripts/*.js"
   },
   "keywords": [
     "Steam",
@@ -12,5 +13,9 @@
     "screenreader"
   ],
   "author": "Mike Schwartz",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-static-files-copy": "^2.4.3"
+  }
 }
