@@ -10,27 +10,20 @@
     "96": "icons/logo-96.png"
   },
 
-  "permissions": ["<all_urls>", "tabs"],
-
   "content_scripts": [
     {
       "matches": ["*://store.steampowered.com/"],
-      "js": ["mainPage.js"],
+      "js": ["src/contentScripts/mainPage.js"],
       "run_at": "document_start"
     },
     {
       "matches": ["*://*.store.steampowered.com/*"],
-      "js": ["badges.js"]
-      // "run_at": "document_start"
+      "js": ["src/contentScripts/badges.js"],
+      "css": ["src/styles/accessibility.css"]
     },
     {
       "matches": ["*://*.store.steampowered.com/sale/*"],
-      "js": ["salePage.js"]
-      // "run_at": "document_start"
+      "js": ["src/contentScripts/salePage.js"]
     }
-  ],
-
-  "background": {
-    "scripts": ["background.js"]
-  }
+  ]
 }
