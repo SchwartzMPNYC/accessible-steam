@@ -7,10 +7,6 @@
 }
 
 /*Debugging css*/
-/*[aria-label]:not(:focus) {
-	outline: 3px solid #2f8;
-}*/
-
-a {
+[aria-label]:not(:focus) {
 	outline: 3px solid #2f8;
 }
