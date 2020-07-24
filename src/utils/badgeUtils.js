@@ -41,7 +41,4 @@ const getBadgeText = badge => {
     return platform;
 };
 
-export {
-    labelPlatformBadges,
-    getBadgeText
-};
+export { labelPlatformBadges, getBadgeText };
