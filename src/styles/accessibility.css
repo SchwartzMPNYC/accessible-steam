@@ -6,7 +6,7 @@
 	}
 }
 
-/*Debugging css*/
-[aria-label]:not(:focus) {
+/*this will probably change*/
+*:focus{
 	outline: 3px solid #2f8;
 }
