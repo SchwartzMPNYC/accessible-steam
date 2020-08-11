@@ -18,7 +18,7 @@
     },
     {
       "matches": ["*://*.store.steampowered.com/*"],
-      "js": ["src/contentScripts/badges.js"],
+      "js": ["src/contentScripts/badges.js", "src/contentScripts/languageDropdown.js", "src/contentScripts/topNavKeyboard.js"],
       "css": ["src/styles/accessibility.css"]
     },
     {
