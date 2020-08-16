@@ -9,6 +9,8 @@ const focusLastMenuItem = menu => {
 	const allItems = menu.querySelectorAll(`a,button`);
 	allItems[allItems.length - 1].focus();
 };
+
+// params: toggle button, the element containing the menu items, and an object of functions in the form of { ifExpanded, ifCollapsed }
 const changeElementIntoMenuToggle = (toggle, menu, actionsBasedOnExpandedState = false) => {
 	// Toggle aria state and run any custom functions we need
 	const expandOrCollapse = event => {
