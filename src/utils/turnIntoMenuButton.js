@@ -13,8 +13,9 @@ const focusLastMenuItem = menu => {
 // params: toggle button, the element containing the menu items, and an object of functions in the form of { ifExpanded, ifCollapsed }
 const changeElementIntoMenuToggle = (toggle, menu, actionsBasedOnExpandedState = false) => {
 	// Toggle aria state and run any custom functions we need
-	const expandOrCollapse = event => {
-		event.preventDefault();
+	const expandOrCollapse = (event = false) => {
+		if (event?.type === 'click') event.preventDefault();
+
 		const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
 		toggle.setAttribute('aria-expanded', !isExpanded);
 
