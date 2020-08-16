@@ -36,10 +36,9 @@ const observerCallback = function (mutationsList, observer) {
 		changeIntoMenu(subMenu, subMenuToggle);
 	};
 
-	mutationsList.forEach(({ addedNodes }) => addedNodes.forEach(moveSubmenusAndAddListeners));
-
-	// Disconnecting here after our work is done.
+	// we're gonna cause some mutations, so lets disconnect first
 	observer.disconnect();
+	mutationsList.forEach(({ addedNodes }) => addedNodes.forEach(moveSubmenusAndAddListeners));
 };
 
 const observer = new MutationObserver(observerCallback);
