@@ -21,7 +21,7 @@ const changeElementIntoMenuToggle = (toggle, menu, actionsBasedOnExpandedState =
 
 		if (actionsBasedOnExpandedState) {
 			const { ifExpanded, ifCollapsed } = actionsBasedOnExpandedState;
-			isExpanded ? ifExpanded() : ifCollapsed();
+			isExpanded ? ifExpanded && ifExpanded() : ifCollapsed && ifCollapsed();
 		}
 
 		if (!isExpanded && event?.type === 'click') menu.querySelector('a,button').focus();
