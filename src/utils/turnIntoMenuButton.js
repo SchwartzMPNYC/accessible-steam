@@ -25,6 +25,11 @@ const changeElementIntoMenuToggle = (toggle, menu, actionsBasedOnExpandedState =
 		}
 
 		if (!isExpanded && event?.type === 'click') menu.querySelector('a,button').focus();
+
+		// We want shift + tab to focus the element before the toggle, so we'll make it only focusable with JS when the 
+		// menu is expanded, and reintroduce it to the page tab flow when collapsed.
+		toggle.setAttribute('tabindex', isExpanded ? '0' : '-1');
+	};
 	};
 
 	// set an aria role if required... it probably is
