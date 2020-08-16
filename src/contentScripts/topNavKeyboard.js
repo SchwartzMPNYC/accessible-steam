@@ -19,7 +19,7 @@ const moveSubmenus = (subMenu, subMenuToggle) =>
 // We can do this because the first item in the menu area has the same destination as what we're turning into a toggle
 const changeIntoMenu = (subMenu, subMenuToggle) => {
 	// give button role, button functionality, expanded attrs, etc
-	changeElementIntoMenuToggle(subMenuToggle, submenu, {
+	changeElementIntoMenuToggle(subMenuToggle, subMenu, {
 		ifExpanded: () => simulateMouseOut(subMenuToggle),
 		ifCollapsed: () => simulateMouseOver(subMenuToggle),
 	});
