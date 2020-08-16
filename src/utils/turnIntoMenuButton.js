@@ -1,6 +1,14 @@
 import { applySimulatedClickListener } from './simulateStandardClickListener.js';
 
-// params: toggle button, an object of functions in the form of { ifExpanded, ifCollapsed }
+const focusFirstMenuItem = menu => {
+	menu.querySelector(`a,button`).focus();
+};
+const focusLastMenuItem = menu => {
+	// Not using :last-child because not being in control of the markup means that this may not actually be the last child
+	// Not using :last-of-type because I think this is gonna get updated to [role="menu-item"]
+	const allItems = menu.querySelectorAll(`a,button`);
+	allItems[allItems.length - 1].focus();
+};
 const changeElementIntoMenuToggle = (toggle, menu, actionsBasedOnExpandedState = false) => {
 	// Toggle aria state and run any custom functions we need
 	const expandOrCollapse = event => {
