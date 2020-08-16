@@ -30,6 +30,52 @@ const changeElementIntoMenuToggle = (toggle, menu, actionsBasedOnExpandedState =
 		// menu is expanded, and reintroduce it to the page tab flow when collapsed.
 		toggle.setAttribute('tabindex', isExpanded ? '0' : '-1');
 	};
+
+	const toggleKeyboardHandler = event => {
+		const { key } = event;
+		switch (key) {
+			case 'Escape':
+				if (toggle.getAttribute('aria-expanded') === 'true') expandOrCollapse();
+				break;
+			case 'ArrowDown':
+				event.preventDefault();
+				if (toggle.getAttribute('aria-expanded') === 'false') expandOrCollapse();
+				focusFirstMenuItem(menu);
+				break;
+			case 'ArrowUp':
+				if (toggle.getAttribute('aria-expanded') === 'false') expandOrCollapse();
+				event.preventDefault();
+				focusLastMenuItem(menu);
+				break;
+		}
+	};
+
+	// menu interaction keys
+	const menuKeyboardHandler = event => {
+		const { key } = event;
+		switch (key) {
+			case 'Escape':
+				// We're handling closing the menu on focusout with menuFocusOutHandler, so we shouldn't collapse it here.
+				toggle.focus();
+				break;
+			case 'ArrowDown':
+				event.preventDefault();
+				document.activeElement.nextElementSibling
+					? document.activeElement.nextElementSibling.focus()
+					: focusFirstMenuItem(menu);
+				break;
+			case 'ArrowUp':
+				event.preventDefault();
+				document.activeElement.previousElementSibling
+					? document.activeElement.previousElementSibling.focus()
+					: focusLastMenuItem(menu);
+				break;
+		}
+	};
+
+	//collapse menu if child is not focused
+	const menuFocusOutHandler = ({ relatedTarget }) => {
+		if (!menu.contains(relatedTarget)) expandOrCollapse();
 	};
 
 	// set an aria role if required... it probably is
@@ -46,9 +92,14 @@ const changeElementIntoMenuToggle = (toggle, menu, actionsBasedOnExpandedState =
 
 	// expand/collapse on click
 	toggle.addEventListener('click', expandOrCollapse);
+	toggle.addEventListener('keydown', toggleKeyboardHandler);
 
 	// by default a link won't listen for the spacebar, so we're adding that listener here
 	applySimulatedClickListener(toggle);
+
+	// add events for keyboard navigation of menu items
+	menu.addEventListener('keydown', menuKeyboardHandler);
+	menu.addEventListener('focusout', menuFocusOutHandler);
 };
 
 export { changeElementIntoMenuToggle };
