@@ -24,7 +24,7 @@ const changeElementIntoMenuToggle = (toggle, menu, actionsBasedOnExpandedState =
 			isExpanded ? ifExpanded() : ifCollapsed();
 		}
 
-		// if (isExpanded) menu.querySelector('a,button').focus();
+		if (!isExpanded && event?.type === 'click') menu.querySelector('a,button').focus();
 	};
 
 	// set an aria role if required... it probably is
