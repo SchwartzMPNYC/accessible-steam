@@ -33,6 +33,9 @@ const changeElementIntoMenuToggle = (toggle, menu, actionsBasedOnExpandedState =
 	// set a tabindex if our element isn't something naturally in the tab order
 	if (!/(button|a)/.test(toggle.tagName)) toggle.setAttribute('tabindex', '0');
 
+	// take links in menu out of tab order
+	menu.querySelectorAll('a,button').forEach(option => option.setAttribute('tabindex', '-1'));
+
 	// set our default aria-expanded attr
 	toggle.setAttribute('aria-expanded', 'false');
 

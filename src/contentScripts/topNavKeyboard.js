@@ -23,9 +23,6 @@ const changeIntoMenu = (subMenu, subMenuToggle) => {
 		ifExpanded: () => simulateMouseOut(subMenuToggle),
 		ifCollapsed: () => simulateMouseOver(subMenuToggle),
 	});
-
-	// take links in menu out of tab order
-	subMenu.querySelectorAll('a').forEach(a => a.setAttribute('tabindex', '-1'));
 };
 
 const observerCallback = function (mutationsList, observer) {
