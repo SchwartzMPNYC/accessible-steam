@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prettify": "prettier --write 'src/**/*.js'",
+    "prettify": "prettier --write 'src/**/*.(js|css)'",
     "cleanup": "rm -rf dist",
     "dev": "parcel watch manifest.json",
     "prebuild": "npm run prettify",
