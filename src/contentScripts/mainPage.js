@@ -115,11 +115,58 @@ const labelweekLongDealsIdentifier = () => {
 		);
 };
 
+const applySemanticsToGutterNav = () => {
+	const gutterItemsSublistSelector = '.gutter_items';
+	const gutter = document.querySelector('.home_page_gutter');
+	const gutterBlocks = gutter.querySelectorAll('.home_page_gutter_block');
+
+	const createList = (elToBeListified, header) => {
+		// This will filter out the header and wrap links in LI elements
+		const listItemReducer = (listItems, link) => {
+			if (link !== header) {
+				const li = document.createElement('li');
+				li.append(link);
+				listItems.push(li);
+			}
+
+			return listItems;
+		};
+
+		// create & label semantic list element
+		const list = document.createElement('ul');
+		setLabel(list, header.textContent.trim());
+		// hide the header from AT
+		header.setAttribute('aria-hidden', 'true');
+		// append links to list el, once they've been filtered and wrapped
+		list.append(...[...elToBeListified.children].reduce(listItemReducer, []));
+		// append semantic list in place
+		elToBeListified.append(list);
+	};
+
+	gutter.setAttribute('role', 'navigation');
+	// TODO: Come up with a name for AT that's actually descriptive of content and not placement on page.
+	setLabel(gutter, 'Side navigation');
+
+	gutterBlocks.forEach(block => {
+		if (block.querySelector(gutterItemsSublistSelector)) {
+			// If a gutter block as a 'gutter items' node we want to make that into a list
+			block.querySelectorAll(gutterItemsSublistSelector).forEach(toListify => {
+				const header = toListify.previousElementSibling;
+				createList(toListify, header);
+			});
+		} else {
+			// If there's no 'gutter items' block, then we make the entire block into a list
+			const header = block.querySelector('.gutter_header');
+			createList(block, header);
+		}
+	});
+};
+
 const accessify = async () => {
-	console.log('Accessifying Steam');
 	labelweekLongDealsIdentifier();
 	labelSpotLights();
 	labelStoreCapsules();
+	applySemanticsToGutterNav();
 	console.log('Accessified Steam');
 };
 
