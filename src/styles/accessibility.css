@@ -6,7 +6,14 @@
 	}
 }
 
+/*I know this is super specific, but I'm overriding something that's kinda specific while trying to glob onto
+some styles that steam has already written for something else. */
+#global_header .menuitem.supernav.pulldown {
+	padding-right: 1.5em;
+	background-position: right bottom 0.6em;
+}
+
 /*this will probably change*/
-*:focus{
+*:focus {
 	outline: 3px solid #2f8;
 }

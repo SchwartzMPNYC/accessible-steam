@@ -42,7 +42,10 @@ const observer = new MutationObserver(observerCallback);
 
 const superNav = () => {
 	observer.observe(superNavContainer, observerConfig);
-	document.querySelectorAll('.menuitem.supernav').forEach(simulateMouseOverAndOut);
+	document.querySelectorAll('.menuitem.supernav').forEach(item => {
+		simulateMouseOverAndOut(item);
+		item.classList.add('pulldown');
+	});
 };
 
 export { superNav };
