@@ -1,5 +1,5 @@
-import { simulateMouseOver, simulateMouseOut, simulateMouseOverAndOut } from '../utils/simulateHover.js';
-import { changeElementIntoMenuToggle } from '../utils/turnIntoMenuButton.js';
+import { simulateMouseOver, simulateMouseOut, simulateMouseOverAndOut } from '../../utils/simulateHover.js';
+import { changeElementIntoMenuToggle } from '../../utils/turnIntoMenuButton.js';
 
 const superNavContainer = document.querySelector('.supernav_container');
 const observerConfig = { childList: true };
@@ -40,5 +40,9 @@ const observerCallback = function (mutationsList, observer) {
 
 const observer = new MutationObserver(observerCallback);
 
-observer.observe(superNavContainer, observerConfig);
-document.querySelectorAll('.menuitem.supernav').forEach(simulateMouseOverAndOut);
+const superNav = () => {
+	observer.observe(superNavContainer, observerConfig);
+	document.querySelectorAll('.menuitem.supernav').forEach(simulateMouseOverAndOut);
+};
+
+export { superNav };
